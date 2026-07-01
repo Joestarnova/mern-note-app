@@ -12,7 +12,7 @@ const rateLimiter = async (req, res, next) => {
     next()
   } catch (error) {
     console.log("Rate limit error", error);
-    next(error);
+    next(); // fail open: don't block requests when the limiter is unreachable
   }
 };
 
